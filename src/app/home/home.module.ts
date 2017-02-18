@@ -5,6 +5,7 @@ import {SideNavComponent} from "./side-nav/side-nav.component";
 import {RouterModule, Routes} from "@angular/router";
 
 const routes: Routes = [
+  {path: 'home', pathMatch: 'full', redirectTo: '/home/client-side-filter'},
   {
     path: '',
     component: HomeComponent,

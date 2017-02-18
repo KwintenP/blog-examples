@@ -4,6 +4,7 @@ import { CharacterListComponent } from './character-list/character-list.componen
 import { GenderFilterComponent } from './gender-filter/gender-filter.component';
 import {Routes, RouterModule} from "@angular/router";
 import { ClientSideFilterComponent } from './client-side-filter/client-side-filter.component';
+import {CommonLogicModule} from "../../common-logic/common-logic.module";
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    // RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CommonLogicModule
   ],
   declarations: [CharacterListComponent, GenderFilterComponent, ClientSideFilterComponent]
 })

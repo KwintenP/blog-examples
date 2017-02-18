@@ -1,3 +1,16 @@
-<p>
-  character-list works!
-</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let character of characters">
+    <td>{{character.name}}</td>
+    <td>{{character.birth_year}}</td>
+    <td>{{character.gender}}</td>
+  </tr>
+  </tbody>
+</table>

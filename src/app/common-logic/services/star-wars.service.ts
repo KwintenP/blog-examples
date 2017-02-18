@@ -15,6 +15,6 @@ export class StarWarsService {
 
   public getCharacters(): Observable<StarWarsCharacter[]> {
     return this.http.get('https://swapi.co/api/people/')
-      .map((response: Response) => response.json());
+      .map((response: Response) => response.json().results);
   }
 }
