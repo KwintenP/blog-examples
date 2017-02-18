@@ -1,4 +1,10 @@
 <h1>Client side filtering with streams example</h1>
-
-<app-gender-filter (filterChange)="filterChanged($event)"></app-gender-filter>
-<app-character-list [characters]="filteredCharacters$ | async"></app-character-list>
+<div class="row">
+  <div class="col-sm-3">
+    <app-gender-filter (filterChange)="filterChanged($event)"></app-gender-filter>
+  </div>
+  <div class="col-sm-9"></div>
+  <div class="col-sm-6">
+    <app-character-list [characters]="filteredCharacters$ | async"></app-character-list>
+  </div>
+</div>
