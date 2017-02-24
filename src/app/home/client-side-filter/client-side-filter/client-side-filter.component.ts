@@ -29,12 +29,15 @@ export class ClientSideFilterComponent implements OnInit {
     // ------C---------------
     // combine latest
     // A----f-----f----f-----  (f filtered char list)
-    this.filteredCharacters$ = this.characters$.combineLatest(
-      this.filter$, (characters: StarWarsCharacter[], filter: string) => {
+    this.filteredCharacters$ = this.createFilterCharacters(this.filter$, this.characters$);
+  }
+
+  public createFilterCharacters(filter$: Observable<string>, characters$: Observable<StarWarsCharacter[]>) {
+    return characters$.combineLatest(
+      filter$, (characters: StarWarsCharacter[], filter: string) => {
         if (filter === "All") return characters;
-        console.log(characters);
         return characters.filter((character: StarWarsCharacter) => character.gender.toLowerCase() === filter.toLowerCase());
-      })
+      });
   }
 
   filterChanged(value: string) {

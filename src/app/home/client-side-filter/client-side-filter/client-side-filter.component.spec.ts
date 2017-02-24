@@ -46,10 +46,25 @@ fdescribe('ClientSideFilterComponent', () => {
   })
 
   it("should calculate the thing correctly", () => {
-    (<Spy>starWarsService.getCharacters).and.returnValue(cold("--a-|", {a: [{name:"test", birth_year:"102020", gender: "M"}]}));
+    const values = {a: "ALL", b: "MALE", c: "FEMALE", d: "All"};
+    const filter$ = cold("a---b----c--d---|", values);
 
-    component.ngOnInit();
+    const obiWan = {
+      name: "Obi Wan",
+      gender: "FEMALE"
+    };
+    const yoda = {
+      name: "Yoda",
+      gender: "Male"
+    };
+    const C3PO = {
+      name: "c3po",
+      gender: "N/A"
+    };
+    const characters$ = cold("-----a|", {a :[obiWan, yoda, C3PO]});
 
-    expectObservable(component.characters$).toBe(("--a-|", {a: [{name:"test", birth_year:"102020", gender: "M"}]}));
+    const result$ = component.createFilterCharacters(filter$, characters$);
+
+    expectObservable(result$).toBe("-----a---b--c---|", {a:[yoda], b:[obiWan], c:[obiWan, yoda, C3PO]});
   });
 });
