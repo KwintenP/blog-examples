@@ -7,7 +7,7 @@ function hot(...args: any[]) {
   return global.rxTestScheduler.createHotObservable.apply(global.rxTestScheduler, arguments);
 }
 
-function cold() {
+function cold(...args: any[]) {
   if (!global.rxTestScheduler) {
     throw 'tried to use cold() in async test';
   }

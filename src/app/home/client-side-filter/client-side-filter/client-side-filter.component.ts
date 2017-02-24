@@ -10,22 +10,31 @@ import "rxjs/add/operator/combineLatest";
   styleUrls: ['./client-side-filter.component.css']
 })
 export class ClientSideFilterComponent implements OnInit {
-  filter$ = new BehaviorSubject("All");
-
-  characters$: Observable<StarWarsCharacter[]> = this.starWarsService.getCharacters();
-
-  filteredCharacters$ = this.characters$.combineLatest(
-    this.filter$, (characters: StarWarsCharacter[], filter: string) => {
-      if (filter === "All") return characters;
-      console.log(characters);
-      return characters.filter((character: StarWarsCharacter) => character.gender.toLowerCase() === filter.toLowerCase());
-    })
+  filter$;
+  characters$;
+  filteredCharacters$;
 
   constructor(private starWarsService: StarWarsService) {
   }
 
   ngOnInit() {
 
+    // A-----M----F----N----
+    this.filter$ = new BehaviorSubject("All");
+
+    // -----C------
+    this.characters$  = this.starWarsService.getCharacters();
+
+    // A-----M----F----N----
+    // ------C---------------
+    // combine latest
+    // A----f-----f----f-----  (f filtered char list)
+    this.filteredCharacters$ = this.characters$.combineLatest(
+      this.filter$, (characters: StarWarsCharacter[], filter: string) => {
+        if (filter === "All") return characters;
+        console.log(characters);
+        return characters.filter((character: StarWarsCharacter) => character.gender.toLowerCase() === filter.toLowerCase());
+      })
   }
 
   filterChanged(value: string) {

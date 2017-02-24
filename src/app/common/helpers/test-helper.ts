@@ -115,6 +115,7 @@ global.lowerCaseO = function lowerCaseO() {
 
   const o = {
     subscribe: function(observer) {
+      console.log("called");
       values.forEach(function(v) {
         observer.next(v);
       });
