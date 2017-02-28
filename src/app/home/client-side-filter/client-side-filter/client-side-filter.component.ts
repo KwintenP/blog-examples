@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {StarWarsService} from "../../../common-logic/services/star-wars.service";
 import {StarWarsCharacter} from "../../../common-logic/entities/star-wars.entity";
-import {Observable, BehaviorSubject} from "rxjs";
+import {Observable, BehaviorSubject, Subject} from "rxjs";
 import "rxjs/add/operator/combineLatest";
 
 @Component({
@@ -10,9 +10,9 @@ import "rxjs/add/operator/combineLatest";
   styleUrls: ['./client-side-filter.component.css']
 })
 export class ClientSideFilterComponent implements OnInit {
-  filter$;
-  characters$;
-  filteredCharacters$;
+  filter$: Subject<string>;
+  characters$: Observable<StarWarsCharacter[]>;
+  filteredCharacters$: Observable<StarWarsCharacter[]>;
 
   constructor(private starWarsService: StarWarsService) {
   }
@@ -43,5 +43,4 @@ export class ClientSideFilterComponent implements OnInit {
   filterChanged(value: string) {
     this.filter$.next(value);
   }
-
 }
