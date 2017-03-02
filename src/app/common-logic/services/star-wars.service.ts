@@ -6,6 +6,7 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/publishReplay';
 import {ConnectableObservable} from 'rxjs';
 import {StarWarsCharacter} from "../entities/star-wars.entity";
+import {logMethod} from "../util/util";
 @Injectable()
 export class StarWarsService {
 
@@ -13,6 +14,7 @@ export class StarWarsService {
 
   }
 
+  @logMethod
   public getCharacters(): Observable<StarWarsCharacter[]> {
     return this.http.get('https://swapi.co/api/people/')
       .map((response: Response) => response.json().results);
