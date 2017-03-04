@@ -13,7 +13,11 @@ const routes: Routes = [
       {
         path: 'client-side-filter',
         loadChildren: 'app/home/client-side-filter/client-side-filter.module#ClientSideFilterModule'
-      }
+      },
+      {
+        path: 'retry',
+        loadChildren: 'app/home/retry/retry.module#RetryModule'
+      },
     ]
   },
 ];

@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CharacterListComponent } from './character-list/character-list.component';
-import { GenderFilterComponent } from './gender-filter/gender-filter.component';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {GenderFilterComponent} from "./gender-filter/gender-filter.component";
 import {Routes, RouterModule} from "@angular/router";
-import { ClientSideFilterComponent } from './client-side-filter/client-side-filter.component';
+import {ClientSideFilterComponent} from "./client-side-filter/client-side-filter.component";
 import {CommonLogicModule} from "../../common-logic/common-logic.module";
-import { ClientSideFilterWithoutStreamComponent } from './client-side-filter-without-stream/client-side-filter-without-stream.component';
+import {ClientSideFilterWithoutStreamComponent} from "./client-side-filter-without-stream/client-side-filter-without-stream.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'withStream'},
@@ -25,6 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonLogicModule
   ],
-  declarations: [CharacterListComponent, GenderFilterComponent, ClientSideFilterComponent, ClientSideFilterWithoutStreamComponent]
+  declarations: [GenderFilterComponent, ClientSideFilterComponent, ClientSideFilterWithoutStreamComponent]
 })
-export class ClientSideFilterModule { }
+export class ClientSideFilterModule {
+}

@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {StarWarsCharacter} from "../../../common-logic/entities/star-wars.entity";
+import {StarWarsCharacter} from "../../common-logic/entities/star-wars.entity";
 
 @Component({
   selector: 'app-character-list',

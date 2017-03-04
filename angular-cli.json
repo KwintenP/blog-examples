@@ -19,12 +19,14 @@
       "mobile": false,
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "styles.css"
+        "styles.css",
+        "./assets/styles/prism.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/tether/dist/js/tether.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "./assets/js/prism.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
