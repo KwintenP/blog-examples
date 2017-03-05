@@ -9,12 +9,16 @@ import {Observable} from "rxjs";
   styleUrls: ['./retry.component.css']
 })
 export class RetryComponent implements OnInit {
+  charactersThatFail$: Observable<StarWarsCharacter[]>;
   characters$: Observable<StarWarsCharacter[]>;
+
+  canLoad: boolean = false;
 
   constructor(private starWarsService: StarWarsService) { }
 
   ngOnInit() {
-    this.characters$ = this.starWarsService.getCharactersAndFail();
+    this.characters$ = this.starWarsService.getCharacters();
+    this.charactersThatFail$ = this.starWarsService.getCharactersAndFail();
   }
 
 }

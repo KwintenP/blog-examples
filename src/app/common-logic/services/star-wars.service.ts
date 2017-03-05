@@ -13,6 +13,7 @@ export class StarWarsService {
 
   }
 
+  @retry(3, [{name: 'Obi Wan', birth_year: '1234', gender: 'Male'}])
   public getCharacters(): Observable<StarWarsCharacter[]> {
     return this.http.get('https://swapi.co/api/people/')
       .map((response: Response) => response.json().results);
