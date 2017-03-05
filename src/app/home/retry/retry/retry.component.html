@@ -4,5 +4,5 @@
 <app-character-list [characters]="charactersThatFail$ | async"></app-character-list>
 
 <h3>These characters load if there is internet and fail if you are offline, click the button to load</h3>
-<button type="button" (click)="canLoad = true">Click me to load (go offline first!)</button>
+<button type="button" (click)="canLoad = true">Click me to load characters(go offline first!)</button>
 <app-character-list *ngIf="canLoad" [characters]="characters$ | async"></app-character-list>
