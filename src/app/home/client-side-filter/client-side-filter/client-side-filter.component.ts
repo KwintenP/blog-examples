@@ -1,8 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {StarWarsService} from "../../../common-logic/services/star-wars.service";
-import {StarWarsCharacter} from "../../../common-logic/entities/star-wars.entity";
-import {Observable, BehaviorSubject, Subject} from "rxjs";
-import "rxjs/add/operator/combineLatest";
+import {Component, OnInit} from '@angular/core';
+import {StarWarsService} from '../../../common-logic/services/star-wars.service';
+import {StarWarsCharacter} from '../../../common-logic/entities/star-wars.entity';
+import {Observable, BehaviorSubject, Subject} from 'rxjs';
+import 'rxjs/add/operator/combineLatest';
 
 @Component({
   selector: 'app-client-side-filter',
@@ -20,7 +20,7 @@ export class ClientSideFilterComponent implements OnInit {
   ngOnInit() {
 
     // A-----M----F----N----
-    this.filter$ = new BehaviorSubject("All");
+    this.filter$ = new BehaviorSubject('All');
 
     // -----C------
     this.characters$  = this.starWarsService.getCharacters();
@@ -35,7 +35,9 @@ export class ClientSideFilterComponent implements OnInit {
   public createFilterCharacters(filter$: Observable<string>, characters$: Observable<StarWarsCharacter[]>) {
     return characters$.combineLatest(
       filter$, (characters: StarWarsCharacter[], filter: string) => {
-        if (filter === "All") return characters;
+        if (filter === 'All') {
+          return characters;
+        }
         return characters.filter((character: StarWarsCharacter) => character.gender.toLowerCase() === filter.toLowerCase());
       });
   }
