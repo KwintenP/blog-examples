@@ -1,20 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {StarWarsService} from '../../../common-logic/services/star-wars.service';
-import {StarWarsCharacter} from '../../../common-logic/entities/star-wars.entity';
-import {Observable, BehaviorSubject, Subject} from 'rxjs';
-import 'rxjs/add/operator/combineLatest';
+import {Component, OnInit, ViewChildren, AfterViewInit} from "@angular/core";
+import {StarWarsService} from "../../../common-logic/services/star-wars.service";
+import {StarWarsCharacter} from "../../../common-logic/entities/star-wars.entity";
+import {Observable, BehaviorSubject, Subject} from "rxjs";
+import "rxjs/add/operator/combineLatest";
+import {GenderFilterComponent} from "../gender-filter/gender-filter.component";
 
 @Component({
   selector: 'app-client-side-filter',
   templateUrl: './client-side-filter.component.html',
   styleUrls: ['./client-side-filter.component.css']
 })
-export class ClientSideFilterComponent implements OnInit {
+export class ClientSideFilterComponent implements OnInit, AfterViewInit {
   filter$: Subject<string>;
   characters$: Observable<StarWarsCharacter[]>;
   filteredCharacters$: Observable<StarWarsCharacter[]>;
 
   constructor(private starWarsService: StarWarsService) {
+  }
+
+  @ViewChildren(GenderFilterComponent) genderFilter;
+
+  ngAfterViewInit() {
+    console.log(this.genderFilter);
   }
 
   ngOnInit() {
@@ -23,7 +30,7 @@ export class ClientSideFilterComponent implements OnInit {
     this.filter$ = new BehaviorSubject('All');
 
     // -----C------
-    this.characters$  = this.starWarsService.getCharacters();
+    this.characters$ = this.starWarsService.getCharacters();
 
     // A-----M----F----N----
     // ------C---------------
