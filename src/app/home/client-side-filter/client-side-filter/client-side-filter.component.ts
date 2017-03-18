@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChildren, AfterViewInit} from "@angular/core";
+import {Component, OnInit, ViewChildren, AfterViewInit, ViewChild} from "@angular/core";
 import {StarWarsService} from "../../../common-logic/services/star-wars.service";
 import {StarWarsCharacter} from "../../../common-logic/entities/star-wars.entity";
 import {Observable, BehaviorSubject, Subject} from "rxjs";
@@ -18,10 +18,10 @@ export class ClientSideFilterComponent implements OnInit, AfterViewInit {
   constructor(private starWarsService: StarWarsService) {
   }
 
-  @ViewChildren(GenderFilterComponent) genderFilter;
+  @ViewChild(GenderFilterComponent) genderFilter;
 
   ngAfterViewInit() {
-    console.log(this.genderFilter);
+    this.genderFilter.filterChange.map(() => "mqlskdfj").subscribe(console.log);
   }
 
   ngOnInit() {
