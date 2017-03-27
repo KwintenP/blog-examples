@@ -15,17 +15,16 @@ export class ClientSideFilterComponent implements OnInit, AfterViewInit {
   characters$: Observable<StarWarsCharacter[]>;
   filteredCharacters$: Observable<StarWarsCharacter[]>;
 
+  @ViewChild(GenderFilterComponent) genderFilter;
+
   constructor(private starWarsService: StarWarsService) {
   }
 
-  @ViewChild(GenderFilterComponent) genderFilter;
-
   ngAfterViewInit() {
-    this.genderFilter.filterChange.map(() => "mqlskdfj").subscribe(console.log);
+    this.genderFilter.filterChange.subscribe(console.log);
   }
 
   ngOnInit() {
-
     // A-----M----F----N----
     this.filter$ = new BehaviorSubject('All');
 
