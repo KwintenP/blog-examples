@@ -1,15 +1,13 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
+import {NgModule, ModuleWithProviders, Type} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {TopNavComponent} from "./top-nav/top-nav.component";
 import {RouterModule, Routes} from "@angular/router";
 import {HomeModule} from "./home/home.module";
-// TODO: remove
-import {Action, StoreModule} from "@ngrx/store";
-import {StoreLogMonitorModule, useLogMonitor} from "@ngrx/store-log-monitor";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {extraModules, environment} from "../environments/environment";
+import {StoreModule, Action} from "@ngrx/store";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home'},
@@ -44,26 +42,21 @@ export function counterReducer(state = 0, action: Action): number {
   }
 }
 
+const importedModules = [
+  BrowserModule,
+  FormsModule,
+  HttpModule,
+  RouterModule.forRoot(routes, {enableTracing: false}),
+  HomeModule,
+  StoreModule.provideStore({counter: counterReducer})
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(routes, {enableTracing: false}),
-    HomeModule,
-    StoreModule.provideStore({counter: counterReducer}),
-    StoreDevtoolsModule.instrumentStore({
-      monitor: useLogMonitor({
-        visible: false,
-        position: "right"
-      })
-    }),
-    StoreLogMonitorModule
-  ],
+  imports: [...importedModules, extraModules],
   providers: [],
   bootstrap: [AppComponent]
 })
