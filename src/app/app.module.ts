@@ -8,7 +8,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HomeModule} from "./home/home.module";
 // TODO: remove
 import {Action, StoreModule} from "@ngrx/store";
-import {StoreLogMonitorModule} from "@ngrx/store-log-monitor";
+import {StoreLogMonitorModule, useLogMonitor} from "@ngrx/store-log-monitor";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 const routes: Routes = [
@@ -56,7 +56,12 @@ export function counterReducer(state = 0, action: Action): number {
     RouterModule.forRoot(routes, {enableTracing: false}),
     HomeModule,
     StoreModule.provideStore({counter: counterReducer}),
-    StoreDevtoolsModule.instrumentStore({}),
+    StoreDevtoolsModule.instrumentStore({
+      monitor: useLogMonitor({
+        visible: false,
+        position: "right"
+      })
+    }),
     StoreLogMonitorModule
   ],
   providers: [],
