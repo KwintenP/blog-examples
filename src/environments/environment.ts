@@ -11,7 +11,7 @@ export const environment = {
 
 export function instrumentOptions() {
   return {
-    monitor: useLogMonitor({ visible: true, position: 'right' })
+    monitor: useLogMonitor({ visible: false, position: 'right' })
   };
 }
 
