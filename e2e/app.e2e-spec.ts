@@ -1,10 +1,10 @@
-import { BlogExamplesPage } from './app.po';
+import { AngularCliDemoPage } from './app.po';
 
-describe('blog-examples App', function() {
-  let page: BlogExamplesPage;
+describe('angular-cli-demo App', () => {
+  let page: AngularCliDemoPage;
 
   beforeEach(() => {
-    page = new BlogExamplesPage();
+    page = new AngularCliDemoPage();
   });
 
   it('should display message saying app works', () => {

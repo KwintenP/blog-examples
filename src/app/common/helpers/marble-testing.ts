@@ -1,4 +1,4 @@
-declare var global;
+declare var global, expect;
 
 function hot(...args: any[]) {
   if (!global.rxTestScheduler) {
