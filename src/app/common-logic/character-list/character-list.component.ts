@@ -9,10 +9,15 @@ import {StarWarsCharacter} from "../../common-logic/entities/star-wars.entity";
 export class CharacterListComponent implements OnInit {
   @Input()
   characters: StarWarsCharacter[];
+  @Input()
+  deleteEnabled = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  delete(): void {
+    console.log("deleted");
+  }
 }

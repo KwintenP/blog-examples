@@ -4,6 +4,7 @@
     <th>First Name</th>
     <th>Last Name</th>
     <th>Username</th>
+    <th *ngIf="deleteEnabled">Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -11,6 +12,7 @@
     <td>{{character.name}}</td>
     <td>{{character.birth_year}}</td>
     <td>{{character.gender}}</td>
+    <td *ngIf="deleteEnabled" (click)="delete()"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
   </tr>
   </tbody>
 </table>
