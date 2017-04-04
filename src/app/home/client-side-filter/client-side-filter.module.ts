@@ -5,6 +5,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {ClientSideFilterComponent} from "./client-side-filter/client-side-filter.component";
 import {CommonLogicModule} from "../../common-logic/common-logic.module";
 import {ClientSideFilterWithoutStreamComponent} from "./client-side-filter-without-stream/client-side-filter-without-stream.component";
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'withStream'},
@@ -24,7 +25,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonLogicModule
   ],
-  declarations: [GenderFilterComponent, ClientSideFilterComponent, ClientSideFilterWithoutStreamComponent]
+  declarations: [GenderFilterComponent, ClientSideFilterComponent, ClientSideFilterWithoutStreamComponent, TestComponent]
 })
 export class ClientSideFilterModule {
 }
