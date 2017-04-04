@@ -18,6 +18,10 @@ const routes: Routes = [
         path: 'retry',
         loadChildren: 'app/home/retry/retry.module#RetryModule'
       },
+      {
+        path: 'no-local-copy',
+        loadChildren: 'app/home/no-local-copies/no-local-copies.module#NoLocalCopiesModule'
+      },
     ]
   },
 ];
