@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {StarWarsCharacter} from "../../common-logic/entities/star-wars.entity";
 
 @Component({
@@ -11,13 +11,15 @@ export class CharacterListComponent implements OnInit {
   characters: StarWarsCharacter[];
   @Input()
   deleteEnabled = false;
+  @Output()
+  delete = new EventEmitter<StarWarsCharacter>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  delete(): void {
-    console.log("deleted");
+  onDelete(character: StarWarsCharacter): void {
+    this.delete.emit(character);
   }
 }

@@ -12,7 +12,7 @@
     <td>{{character.name}}</td>
     <td>{{character.birth_year}}</td>
     <td>{{character.gender}}</td>
-    <td *ngIf="deleteEnabled" (click)="delete()"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+    <td *ngIf="deleteEnabled" (click)="onDelete(character)"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
   </tr>
   </tbody>
 </table>
