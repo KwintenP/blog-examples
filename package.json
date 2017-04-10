@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:docker": "ng serve -H 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -26,6 +27,8 @@
     "@ngrx/store-log-monitor": "3.0.2",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "2.4.1",
+    "font-awesome": "4.7.0",
+    "fontawesome": "4.7.2",
     "jquery": "^3.2.1",
     "rxjs": "5.1.0",
     "tether": "^1.4.0",
