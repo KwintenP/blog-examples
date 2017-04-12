@@ -1,13 +1,14 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule, ModuleWithProviders, Type} from "@angular/core";
+import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {TopNavComponent} from "./top-nav/top-nav.component";
 import {RouterModule, Routes} from "@angular/router";
 import {HomeModule} from "./home/home.module";
-import {extraModules, environment} from "../environments/environment";
-import {StoreModule, Action} from "@ngrx/store";
+import {extraModules} from "../environments/environment";
+import {Action, StoreModule} from "@ngrx/store";
+import {combineReducersEnhanced} from "combine-reducers-enhanced";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home'},
@@ -30,7 +31,6 @@ export function counterReducer(state = 0, action: Action): number {
   switch (action.type) {
     case INCREMENT:
       return state + 1;
-
     case DECREMENT:
       return state - 1;
 
@@ -42,13 +42,28 @@ export function counterReducer(state = 0, action: Action): number {
   }
 }
 
+const rootReducer = {
+  data: {
+    counter: counterReducer
+  },
+  test: {
+    counter2: counterReducer
+  }
+};
+
+const composedReducer = combineReducersEnhanced(rootReducer);
+
+export function createRootReducer(state: any, action: any) {
+  return composedReducer(state, action);
+}
+
 const importedModules = [
   BrowserModule,
   FormsModule,
   HttpModule,
   RouterModule.forRoot(routes, {enableTracing: false}),
   HomeModule,
-  StoreModule.provideStore({counter: counterReducer})
+  StoreModule.provideStore(createRootReducer)
 ];
 
 @NgModule({

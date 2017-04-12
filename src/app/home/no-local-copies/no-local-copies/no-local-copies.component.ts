@@ -4,6 +4,7 @@ import {StarWarsCharacter} from "../../../common-logic/entities/star-wars.entity
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 import {CharacterListComponent} from "../../../common-logic/character-list/character-list.component";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-no-local-copies',
@@ -17,7 +18,7 @@ export class NoLocalCopiesComponent implements OnInit, AfterViewInit {
   @ViewChild(CharacterListComponent)
   characterListComponent;
 
-  constructor(private starWarsService: StarWarsService) {
+  constructor(private starWarsService: StarWarsService, private store: Store<any>) {
   }
 
   ngOnInit() {
@@ -43,6 +44,10 @@ export class NoLocalCopiesComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.characterListComponent.delete.map((character: StarWarsCharacter) => new RemoveAction(character))
       .subscribe(this.actions$);
+  }
+
+  sendAction(): void {
+    this.store.dispatch({type: "INCREMENT"});
   }
 }
 
