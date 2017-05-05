@@ -3,8 +3,7 @@ import "rxjs/add/observable/from";
 import "rxjs/add/operator/filter";
 import "rxjs/add/operator/merge";
 import "rxjs/add/operator/take";
-import "./helpers/test-helper.ts";
-import {cold, expectObservable, expectSubscriptions} from "./helpers/marble-testing";
+
 
 // A few basic examples to get started
 describe('The filter operator', () => {
