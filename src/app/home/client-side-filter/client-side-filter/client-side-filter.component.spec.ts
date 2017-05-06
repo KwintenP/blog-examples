@@ -66,13 +66,17 @@ describe('component: ClientSideFilterComponent', () => {
   });
 
   it('on createFilterCharacters with marble testing', () => {
-    const characters = "----c|";
+    // Using ascii marbles, we define a character stream.
+    // It will first take some time (since this is will
+    // be a backend call in real life, and then emit a value
+    // and complete
+    const charactersAscii = "----c|";
     const charactersValues = {c: [obiWan, c3po, leia]};
 
     const gender = "a------b---c--d";
     const genderValues = {a: "All", b: "Male", c: "N/A", d: "Female"};
 
-    const result$ = component.createFilterCharacters(hot(gender, genderValues), cold(characters, charactersValues));
+    const result$ = component.createFilterCharacters(hot(gender, genderValues), cold(charactersAscii, charactersValues));
 
     expectObservable(result$).toBe("----a--b---c--d", {a: charactersValues.c, b: [obiWan], c: [c3po], d: [leia]});
   });
