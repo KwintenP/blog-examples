@@ -30,12 +30,18 @@ describe('component: ClientSideFilterComponent', () => {
   });
 
   it('on createFilterCharacters without marble testing', () => {
+    // create a characters$ stream
     const characters$ = Observable.of([obiWan, c3po, leia]);
+    // create a gender$ stream which is used to filter
     const gender$ = new BehaviorSubject<string>('All');
 
+
     let times = 0;
+    // Feed the two streams to the method and subscribe to the result
     component.createFilterCharacters(gender$, characters$).subscribe(
       (val) => {
+        // Based on the number of values that have passed here
+        // check the value to see if it is what we expect
         if (times === 0) {
           expect(val).toEqual([obiWan, c3po, leia]);
           times++;
@@ -52,6 +58,8 @@ describe('component: ClientSideFilterComponent', () => {
       }
     );
 
+    // pass new values to the gender subject to emulate the
+    // gender filter change
     gender$.next("Male");
     gender$.next("N/A");
     gender$.next("Female");
