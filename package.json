@@ -31,6 +31,7 @@
     "font-awesome": "4.7.0",
     "fontawesome": "4.7.2",
     "jquery": "^3.2.1",
+    "rx-devtools": "0.0.1-alpha.9",
     "rxjs": "5.1.0",
     "tether": "^1.4.0",
     "zone.js": "0.8.4"
