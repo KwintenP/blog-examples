@@ -19,7 +19,7 @@ export class RetryComponent implements OnInit {
 
   ngOnInit() {
     this.characters$ = this.starWarsService.getCharacters();
-    this.charactersThatFail$ = this.starWarsService.getCharactersAndFail().consecutive().audit();
+    this.charactersThatFail$ = this.starWarsService.getCharactersAndFail();
   }
 
 }

@@ -5,7 +5,6 @@ import {Observable, BehaviorSubject, Subject} from "rxjs";
 import "rxjs/add/operator/combineLatest";
 import {GenderFilterComponent} from "../gender-filter/gender-filter.component";
 import 'rx-devtools/add/operator/debug';
-import 'rx-devtools/add';
 import {MapOperator} from 'rxjs/operator/map';
 
 @Component({
