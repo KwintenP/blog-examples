@@ -4,6 +4,9 @@ import {StarWarsCharacter} from "../../../common-logic/entities/star-wars.entity
 import {Observable, BehaviorSubject, Subject} from "rxjs";
 import "rxjs/add/operator/combineLatest";
 import {GenderFilterComponent} from "../gender-filter/gender-filter.component";
+import 'rx-devtools/add/operator/debug';
+import 'rx-devtools/add';
+import {MapOperator} from 'rxjs/operator/map';
 
 @Component({
   selector: 'app-client-side-filter',
@@ -29,7 +32,7 @@ export class ClientSideFilterComponent implements OnInit, AfterViewInit {
     this.filter$ = new BehaviorSubject('All');
 
     // -----C------
-    this.characters$ = this.starWarsService.getCharacters();
+    this.characters$ = this.starWarsService.getCharacters().debug('first');
 
     // A-----M----F----N----
     // ------C---------------

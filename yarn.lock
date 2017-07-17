@@ -4268,9 +4268,9 @@ run-async@^2.2.0:
   dependencies:
     is-promise "^2.1.0"
 
-rx-devtools@0.0.1-alpha.9:
-  version "0.0.1-alpha.9"
-  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.9.tgz#eb38609652c378389a3ab35a8620ba2b8412618c"
+rx-devtools@0.0.1-alpha.20:
+  version "0.0.1-alpha.20"
+  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.20.tgz#0cfbc27fbf4769c4a45c1a00d8ac466519c215aa"
   dependencies:
     "@types/core-js" "0.9.36"
     rxjs "5.4.0"
@@ -4283,6 +4283,10 @@ rx-lite@^3.1.2:
 rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
+
+rxjs-consecutive-operator@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rxjs-consecutive-operator/-/rxjs-consecutive-operator-1.0.0.tgz#92e6f52ac06d625c117baea9bba802458585a3dc"
 
 rxjs@5.1.0, rxjs@^5.0.1:
   version "5.1.0"
