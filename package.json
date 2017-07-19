@@ -31,7 +31,7 @@
     "font-awesome": "4.7.0",
     "fontawesome": "4.7.2",
     "jquery": "^3.2.1",
-    "rx-devtools": "0.0.1-alpha.26",
+    "rx-devtools": "0.0.1-alpha.29",
     "rxjs": "5.1.0",
     "rxjs-consecutive-operator": "1.0.0",
     "tether": "^1.4.0",

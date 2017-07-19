@@ -31,7 +31,7 @@ export class ClientSideFilterComponent implements OnInit, AfterViewInit {
     this.filter$ = new BehaviorSubject('All');
 
     // -----C------
-    this.characters$ = this.starWarsService.getCharacters().debug('first');
+    this.characters$ = this.starWarsService.getCharacters();
 
     // A-----M----F----N----
     // ------C---------------
