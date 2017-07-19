@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
   title = 'app works!';
 
   ngOnInit() {
-    Observable.interval(1000).debug('first');
+    Observable.interval(1000).debug('interval').subscribe();
   }
 }
