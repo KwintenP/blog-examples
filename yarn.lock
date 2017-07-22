@@ -4268,12 +4268,11 @@ run-async@^2.2.0:
   dependencies:
     is-promise "^2.1.0"
 
-rx-devtools@0.0.1-alpha.20:
-  version "0.0.1-alpha.20"
-  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.20.tgz#0cfbc27fbf4769c4a45c1a00d8ac466519c215aa"
+rx-devtools@0.0.1-alpha.33:
+  version "0.0.1-alpha.33"
+  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.33.tgz#e865c2de6db803e362f14f1a790bd1507724cb17"
   dependencies:
     "@types/core-js" "0.9.36"
-    rxjs "5.4.0"
     uuid "3.0.1"
 
 rx-lite@^3.1.2:
@@ -4291,12 +4290,6 @@ rxjs-consecutive-operator@1.0.0:
 rxjs@5.1.0, rxjs@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.1.0.tgz#0aa9018b7f440b505fa42bd742b6738be550e720"
-  dependencies:
-    symbol-observable "^1.0.1"
-
-rxjs@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.0.tgz#a7db14ab157f9d7aac6a56e655e7a3860d39bf26"
   dependencies:
     symbol-observable "^1.0.1"
 

@@ -8,6 +8,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/skip';
+import 'rxjs/add/operator/audit';
 
 import 'rxjs/add/observable/combineLatest';
 
@@ -30,13 +31,11 @@ export class AppComponent implements OnInit {
     const other$ = Observable.interval(2000)
       .debug('second interval')
       .skip(3)
+      .take(5)
       .map((val: number) => val * 3);
 
-    Observable.combineLatest<number, number>(interval$, other$)
+    Observable.combineLatest<number, number>(interval$, other$, (interval, other) => interval * other)
       .debug('combined')
-      .map(([interval, other]) => {
-      return interval * other;
-    })
       .subscribe(() => {});
   }
 }
