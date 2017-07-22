@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
       .debug('combined')
       .map(([interval, other]) => {
       return interval * other;
-    });
+    })
+      .subscribe(() => {});
   }
 }
