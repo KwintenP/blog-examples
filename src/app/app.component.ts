@@ -9,8 +9,8 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/audit';
-
-import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/merge';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const interval$ = Observable.interval(1000)
       .debug('interval')
-      .startWith(12)
       .take(10)
       .filter((val: number) => val % 2 > 0)
       .map((val: number) => val * 2);
@@ -34,7 +33,7 @@ export class AppComponent implements OnInit {
       .take(5)
       .map((val: number) => val * 3);
 
-    Observable.combineLatest<number, number>(interval$, other$, (interval, other) => interval * other)
+    interval$.combineLatest(other$, (interval, other) => interval * other)
       .debug('combined')
       .subscribe(() => {});
   }
