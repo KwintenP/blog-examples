@@ -4268,9 +4268,9 @@ run-async@^2.2.0:
   dependencies:
     is-promise "^2.1.0"
 
-rx-devtools@0.0.1-alpha.33:
-  version "0.0.1-alpha.33"
-  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.33.tgz#e865c2de6db803e362f14f1a790bd1507724cb17"
+rx-devtools@0.0.1-alpha.36:
+  version "0.0.1-alpha.36"
+  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.36.tgz#8e6c89ebb018c6ebdc5c477baadb9b9b85a39ce8"
   dependencies:
     "@types/core-js" "0.9.36"
     uuid "3.0.1"
