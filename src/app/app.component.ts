@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
 
     interval$.combineLatest(other$, (interval, other) => interval * other)
       .debug('combined')
+      .map(val => val)
       .subscribe(() => {});
   }
 }
