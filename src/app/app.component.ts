@@ -12,6 +12,9 @@ import 'rxjs/add/operator/audit';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/merge';
 
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/zip';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -33,7 +36,7 @@ export class AppComponent implements OnInit {
       .take(5)
       .map((val: number) => val * 3);
 
-    interval$.combineLatest(other$, (interval, other) => interval * other)
+    Observable.zip(interval$, other$)
       .debug('combined')
       .map(val => val)
       .subscribe(() => {});
