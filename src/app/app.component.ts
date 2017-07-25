@@ -15,6 +15,7 @@ import 'rxjs/add/operator/merge';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/zip';
+import {Subject} from 'rxjs/Subject';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,6 +25,12 @@ export class AppComponent implements OnInit {
   title = 'app works!';
 
   ngOnInit() {
+    const subject = new Subject();
+
+    subject.next('test');
+
+    subject.debug('test').map(val => val).subscribe();
+
     const interval$ = Observable.interval(1000)
       .debug('interval')
       .take(10)

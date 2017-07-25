@@ -16,6 +16,7 @@ if (environment.production) {
       console.log('subscribed!');
       const subscription =  originalSubscribe.apply(this, args);
       (subscription as any).id = 'testes';
+      console.log('subscription', subscription.unsubscribe);
       return subscription;
     };
 
