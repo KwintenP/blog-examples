@@ -7,6 +7,8 @@ import { setupRxDevtools } from 'rx-devtools/rx-devtools';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 
+import 'web3';
+
 if (environment.production) {
   enableProdMode();
 } else {
@@ -26,7 +28,7 @@ if (environment.production) {
       return originalUnsubscribe.apply(this, args);
     };
   }
-  monkeyPatchSubscribe();
+  // monkeyPatchSubscribe();
   setupRxDevtools();
 }
 
