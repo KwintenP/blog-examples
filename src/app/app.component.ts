@@ -11,11 +11,13 @@ import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/audit';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/concat';
 
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/zip';
+import 'rxjs/add/observable/concat';
 import {Subject} from 'rxjs/Subject';
 
 declare const web3;
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
 
     const interval$ = Observable.interval(1000)
       .debug('interval')
+      .startWith(10)
       .take(10)
       .filter((val: number) => val % 2 > 0)
       .map((val: number) => val * 2);
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit {
       .take(5)
       .map((val: number) => val * 3);
 
-    Observable.zip(interval$, other$, obs$)
+    Observable.concat(interval$, other$, obs$)
       .debug('combined')
       .subscribe(() => {
       });

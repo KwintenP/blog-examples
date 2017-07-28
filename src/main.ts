@@ -3,7 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import { setupRxDevtools } from 'rx-devtools/rx-devtools';
+import { setupRxDevtools } from './rx-devtools';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 
@@ -29,7 +29,7 @@ if (environment.production) {
     };
   }
   // monkeyPatchSubscribe();
-  setupRxDevtools();
+   setupRxDevtools();
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
