@@ -19,6 +19,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/zip';
 import 'rxjs/add/observable/concat';
 import {Subject} from 'rxjs/Subject';
+import {StarWarsService} from './common-logic/services/star-wars.service';
 
 declare const web3;
 @Component({
@@ -29,6 +30,9 @@ declare const web3;
 export class AppComponent implements OnInit {
   title = 'app works!';
 
+  constructor(private swService: StarWarsService) {
+
+  }
 
   ngOnInit() {
     // setTimeout(() =>
@@ -37,16 +41,13 @@ export class AppComponent implements OnInit {
     // web3.eth.sendTransaction({from: web3.eth.accounts[0], to: '0xa62dEbD4040563Ce304F2F04c94AaF5B366A35c8', value: web3.toWei(1)}, (result) => console.log(result));
     // );
     //
-    const subject = new Subject();
-
-    const obs$: Observable<number> = subject.debug('subject jeej').map((val: number) => val * 5);
-
     const interval$ = Observable.interval(1000)
       .debug('interval')
       .startWith(10)
       .take(10)
       .filter((val: number) => val % 2 > 0)
-      .map((val: number) => val * 2);
+      .map((val: number) => val * 2)
+      .mergeMap(val => this.swService.getCharacters());
 
     const other$ = Observable.interval(2000)
       .debug('second interval')
@@ -54,17 +55,10 @@ export class AppComponent implements OnInit {
       .take(5)
       .map((val: number) => val * 3);
 
-    Observable.concat(interval$, other$, obs$)
+    Observable.combineLatest(interval$, other$)
       .debug('combined')
       .subscribe(() => {
       });
 
-
-    Observable.of("a", "b", "c", "d")
-      .debug("of")
-      .map(val => val + " " + val)
-      .subscribe();
-
-    subject.next(50);
   }
 }

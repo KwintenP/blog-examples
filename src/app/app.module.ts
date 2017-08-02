@@ -9,6 +9,7 @@ import {HomeModule} from "./home/home.module";
 import {extraModules} from "../environments/environment";
 import {Action, StoreModule} from "@ngrx/store";
 import {combineReducersEnhanced} from "combine-reducers-enhanced";
+import {CommonLogicModule} from './common-logic/common-logic.module';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home'},
@@ -63,7 +64,8 @@ const importedModules = [
   HttpModule,
   RouterModule.forRoot(routes, {enableTracing: false}),
   HomeModule,
-  StoreModule.provideStore(createRootReducer)
+  StoreModule.provideStore(createRootReducer),
+  CommonLogicModule
 ];
 
 @NgModule({
