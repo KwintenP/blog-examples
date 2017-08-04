@@ -3,11 +3,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import { setupRxDevtools } from './rx-devtools';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 
 import 'web3';
+import {setupRxDevtools} from 'rx-devtools/rx-devtools';
 
 if (environment.production) {
   enableProdMode();

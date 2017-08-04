@@ -35,13 +35,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // setTimeout(() =>
-    //   console.log(web3.eth.accounts), 200);
-    //
-    // web3.eth.sendTransaction({from: web3.eth.accounts[0], to: '0xa62dEbD4040563Ce304F2F04c94AaF5B366A35c8', value: web3.toWei(1)}, (result) => console.log(result));
-    // );
-    //
-    const interval$ = Observable.interval(1000)
+    const interval$ = Observable.interval(500)
       .debug('interval')
       .startWith(10)
       .take(10)
@@ -49,7 +43,7 @@ export class AppComponent implements OnInit {
       .map((val: number) => val * 2)
       .mergeMap(val => this.swService.getCharacters());
 
-    const other$ = Observable.interval(2000)
+    const other$ = Observable.interval(1500)
       .debug('second interval')
       .skip(3)
       .take(5)
