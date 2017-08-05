@@ -7,7 +7,7 @@ import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 
 import 'web3';
-import {setupRxDevtools} from 'rx-devtools/rx-devtools';
+import {setupRxDevtools} from './rx-devtools';
 
 if (environment.production) {
   enableProdMode();
