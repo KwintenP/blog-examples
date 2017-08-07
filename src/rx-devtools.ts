@@ -2,13 +2,13 @@ import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {Subscriber} from 'rxjs/Subscriber';
 import {v4 as uuid} from 'uuid';
-import {DebugOperator} from './operator/debug';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {MergeAllOperator} from 'rxjs/operator/mergeAll';
+import {DebugOperator} from './operator/debug';
 declare const require;
 
 export const monkeyPatchOperator = function (operator) {
@@ -195,11 +195,15 @@ export const liftMonkeyPatchFunction = (originalLift) => {
 
 let time = 0;
 
-const resetTimer$ = new Subject<string>().startWith('');
+const resetTimer$ = new Subject<string>();
 resetTimer$
+  .startWith('')
   .switchMap(_ => Observable.interval(150).take(99))
   .map(val => val + 1)
-  .subscribe(val => time = val);
+  .subscribe(val => {
+    console.log('time', time);
+    time = val
+  });
 
 export const monkeyPatchNext = function () {
   const next = Subscriber.prototype.next;
@@ -278,6 +282,13 @@ const sendMessage = (message: any) => {
     console.log('error sending something to the plugin', ex);
   }
 };
+
+window.addEventListener('message', function (event) {
+  if (event.data === 'RESET_TIMER') {
+    console.log('entered');
+    resetTimer$.next('');
+  }
+});
 
 // TODO: when the plugin sends a reset, perform 'resetTimer$.next()' to reset the timer
 // TOOD: fix all the mergeAll operators with a custom 'guess'

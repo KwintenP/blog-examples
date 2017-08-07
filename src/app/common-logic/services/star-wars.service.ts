@@ -19,7 +19,7 @@ export class StarWarsService {
       .map((response: Response) => response.json().results);
   }
 
-  @retry(3, [{name: 'Obi Wan', birth_year: '1234', gender: 'Male'}])
+  // @retry(3, [{name: 'Obi Wan', birth_year: '1234', gender: 'Male'}])
   public getCharactersAndFail(): Observable<StarWarsCharacter[]> {
     return Observable.throw('Failing on purpose');
   }
