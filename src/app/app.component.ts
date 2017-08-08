@@ -36,24 +36,24 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const interval$ = Observable.interval(500)
-    //   .debug('interval')
-    //   .startWith(10)
-    //   .take(10)
-    //   .filter((val: number) => val % 2 > 0)
-    //   .map((val: number) => val * 2)
-    //   .mergeMap(val => this.swService.getCharacters());
-    //
-    // const other$ = Observable.interval(1500)
-    //   .debug('second interval')
-    //   .skip(3)
-    //   .take(5)
-    //   .map((val: number) => val * 3);
-    //
-    // Observable.merge(interval$, other$)
-    //   .debug('combined')
-    //   .subscribe(() => {
-    //   });
+    const interval$ = Observable.interval(500)
+      .debug('interval')
+      .startWith(10)
+      .take(10)
+      .filter((val: number) => val % 2 > 0)
+      .map((val: number) => val * 2)
+      .mergeMap(val => this.swService.getCharactersAndFail());
+
+    const other$ = Observable.interval(1500)
+      .debug('second interval')
+      .skip(3)
+      .take(5)
+      .map((val: number) => val * 3);
+
+    Observable.merge(interval$, other$)
+      .debug('combined')
+      .subscribe(() => {
+      });
 
     const subject$ = new BehaviorSubject<number>(0);
 
