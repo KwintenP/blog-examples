@@ -284,9 +284,11 @@ const sendMessage = (message: any) => {
 };
 
 window.addEventListener('message', function (event) {
-  if (event.data === 'RESET_TIMER') {
+  if (event.data.type === 'RESET_TIMER') {
     console.log('entered');
     resetTimer$.next('');
+  } else if (event.data.type === 'SET_RECORDING_TIME') {
+    console.log(event.data.value);
   }
 });
 

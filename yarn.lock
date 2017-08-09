@@ -4276,9 +4276,9 @@ run-async@^2.2.0:
   dependencies:
     is-promise "^2.1.0"
 
-rx-devtools@0.0.1-alpha.46:
-  version "0.0.1-alpha.46"
-  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.46.tgz#084f6fac460bb432f33c560b646e157960594e0d"
+rx-devtools@0.0.1-alpha.52:
+  version "0.0.1-alpha.52"
+  resolved "https://registry.yarnpkg.com/rx-devtools/-/rx-devtools-0.0.1-alpha.52.tgz#3f42d1ae7c546aa76e0dcc64b85f17bcf6b9f3de"
   dependencies:
     "@types/core-js" "0.9.36"
     uuid "3.0.1"
@@ -4291,6 +4291,12 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
+rxfiddle@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/rxfiddle/-/rxfiddle-1.0.4.tgz#39757d44dd65a362576acf174da18641d4f99170"
+  optionalDependencies:
+    ws "^2.3.1"
+
 rxjs-consecutive-operator@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/rxjs-consecutive-operator/-/rxjs-consecutive-operator-1.0.0.tgz#92e6f52ac06d625c117baea9bba802458585a3dc"
@@ -4301,7 +4307,7 @@ rxjs@5.1.0, rxjs@^5.0.1:
   dependencies:
     symbol-observable "^1.0.1"
 
-safe-buffer@^5.0.1:
+safe-buffer@^5.0.1, safe-buffer@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
@@ -5004,6 +5010,10 @@ ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
 
+ultron@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.0.tgz#b07a2e6a541a815fc6a34ccd4533baec307ca864"
+
 uniq@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/uniq/-/uniq-1.0.1.tgz#b31c5ae8254844a3a8281541ce2b04b865a734ff"
@@ -5381,6 +5391,13 @@ ws@1.1.1, ws@^1.0.1:
   dependencies:
     options ">=0.0.5"
     ultron "1.0.x"
+
+ws@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-2.3.1.tgz#6b94b3e447cb6a363f785eaf94af6359e8e81c80"
+  dependencies:
+    safe-buffer "~5.0.1"
+    ultron "~1.1.0"
 
 wtf-8@1.0.0:
   version "1.0.0"

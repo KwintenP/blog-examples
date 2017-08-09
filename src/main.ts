@@ -8,6 +8,8 @@ import {Subscription} from 'rxjs/Subscription';
 
 import 'web3';
 import {setupRxDevtools} from './rx-devtools';
+import RxFiddle from 'rxfiddle';
+import {Subscriber} from 'rxjs/Subscriber';
 
 if (environment.production) {
   enableProdMode();
@@ -29,7 +31,12 @@ if (environment.production) {
     };
   }
   // monkeyPatchSubscribe();
-   setupRxDevtools();
+  //  setupRxDevtools();
 }
+
+new RxFiddle({
+  Observable: Observable,
+  Subscriber: Subscriber,
+}).serve({ port: 8080 })
 
 platformBrowserDynamic().bootstrapModule(AppModule);
