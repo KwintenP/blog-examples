@@ -5,6 +5,7 @@ import {AppModule} from './app/app.module';
 import {environment} from './environments/environment';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
+import {setupRxDevtools} from 'rx-devtools';
 
 import 'web3';
 
@@ -28,7 +29,7 @@ if (environment.production) {
     };
   }
   // monkeyPatchSubscribe();
-  //  setupRxDevtools();
+   setupRxDevtools();
 
   let nrOfSubscriptions = 0;
 

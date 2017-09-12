@@ -12,6 +12,8 @@ import 'rxjs/add/operator/audit';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/concat';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/shareReplay';
 
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/merge';
@@ -20,8 +22,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/zip';
 import 'rxjs/add/observable/concat';
 import {StarWarsService} from './common-logic/services/star-wars.service';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-
+declare const fetch;
 declare const web3;
 @Component({
   selector: 'app-root',
@@ -36,35 +37,84 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const interval$ = Observable.interval(500)
+    // const interval$ = Observable.interval(500)
+    //   .debug('interval')
+    //   .startWith(10)
+    //   .take(10)
+    //   .filter((val: number) => val % 2 > 0)
+    //   .map((val: number) => val * 2)
+    //   .mergeMap(val => this.swService.getCharactersAndFail())
+    //   .publishReplay()
+    // //   .subscribe(console.log);
+    //
+    // const shared$ = Observable.interval(1000)
+    //   .take(5)
+    //   .shareReplay();
+    // // .multicast(new ReplaySubject(1));
+    //
+    //
+    // shared$.subscribe(console.log);
+    //
+    // setTimeout(
+    //   () => {
+    //     shared$.subscribe(console.log);
+    //   }, 7000);
+
+    // const other$ = Observable.interval(1500)
+    //   .debug('second interval')
+    //   .skip(3)
+    //   .take(5)
+    //   .map((val: number) => val * 3);
+    //
+    // Observable.merge(interval$, other$)
+    //   .debug('combined')
+    //   .subscribe(() => {
+    //   });
+    //
+    // const subject$ = new BehaviorSubject<number>(0);
+    //
+    // subject$.debug("test")
+    //   .map((val: number) => val * 2)
+    //   .subscribe(console.log);
+    //
+    // subject$.next(5);
+    //
+    // setTimeout(() => {
+    //   subject$.next(8)
+    // }, 10000);
+
+    // const interval$ = Observable.interval(1).take(5);
+    //
+    // interval$.subscribe(console.log);
+    //
+    // setTimeout(() => interval$.subscribe(console.log), 600);
+
+    Observable.interval(1000)
       .debug('interval')
-      .startWith(10)
       .take(10)
-      .filter((val: number) => val % 2 > 0)
-      .map((val: number) => val * 2)
-      .mergeMap(val => this.swService.getCharactersAndFail());
-
-    const other$ = Observable.interval(1500)
-      .debug('second interval')
-      .skip(3)
-      .take(5)
-      .map((val: number) => val * 3);
-
-    Observable.merge(interval$, other$)
-      .debug('combined')
-      .subscribe(() => {
-      });
-
-    const subject$ = new BehaviorSubject<number>(0);
-
-    subject$.debug("test")
-      .map((val: number) => val * 2)
+      .map(x => x*2)
+      .filter(x => x%2 === 0)
       .subscribe(console.log);
 
-    subject$.next(5);
+    //
+    // const getCharacter = () => {
+    //   return fetch('https://swapi.co/api/people/1', {method: 'get'})
+    //     .then(response => response.json());
+    // }
+    //
+    // const getLuke$: Observable<{name, gender}> = Observable.of('')
+    //   .debug('test')
+    //   .mergeMap(() => getCharacter())
+    //   .share();
+    //
+    // const name$ = getLuke$
+    //   .map(char => char.name);
+    //
+    // const age$ = getLuke$
+    //   .map(char => char.gender);
+    //
+    // name$.subscribe(console.log);
+    // age$.subscribe(console.log);
 
-    setTimeout(() => {
-      subject$.next(8)
-    }, 10000);
   }
 }
