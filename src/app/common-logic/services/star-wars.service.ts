@@ -9,8 +9,6 @@ import {retry} from '../util/util';
 
 @Injectable()
 export class StarWarsService {
-  retries = 5;
-  delay = 10;
 
   constructor(private http: Http) {
 
@@ -28,19 +26,4 @@ export class StarWarsService {
     return Observable.throw('Failing on purpose');
   }
 
-  getDataWithConditionalRetry(url) {
-    return this.http
-      .get(url)
-      .retryWhen(error$ => {
-        return error$
-          .flatMap((error: any) => {
-            if (error.status === 503) {
-              return Observable.of(error.status).delay(this.delay);
-            }
-            return Observable.throw({error: 'No retry'});
-          })
-          .take(this.retries)
-          .concat(Observable.throw({error: `Sorry, there was an error after ${this.retries} retries`}));
-      });
-  }
 }
