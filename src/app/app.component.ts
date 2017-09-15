@@ -89,11 +89,8 @@ export class AppComponent implements OnInit {
     //
     // setTimeout(() => interval$.subscribe(console.log), 600);
 
-    Observable.interval(1000)
-      .debug('interval')
-      .take(10)
-      .map(x => x*2)
-      .filter(x => x%2 === 0)
+    Observable.of(10)
+      .delay(1000)
       .subscribe(console.log);
 
     //

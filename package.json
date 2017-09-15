@@ -25,11 +25,13 @@
     "@ngrx/store": "2.2.1",
     "@ngrx/store-devtools": "3.2.4",
     "@ngrx/store-log-monitor": "3.0.2",
+    "babel-jest": "21.0.2",
     "bootstrap": "^4.0.0-alpha.6",
     "combine-reducers-enhanced": "0.0.4",
     "core-js": "2.4.1",
     "font-awesome": "4.7.0",
     "fontawesome": "4.7.2",
+    "jest-preset-angular": "3.0.1",
     "jquery": "^3.2.1",
     "rx-devtools": "0.0.1-alpha.52",
     "rxfiddle": "1.0.4",
@@ -62,5 +64,20 @@
     "tslint": "4.5.0",
     "typescript": "2.2.0",
     "wallaby-webpack": "0.0.38"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts",
+    "transform": {
+      "^.+\\.(ts|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js",
+      "^.+\\.js$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|@ng-bootstrap)"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,js}",
+      "!src/**/entities/*.{js,ts}"
+    ]
   }
 }
