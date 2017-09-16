@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Scheduler} from 'rxjs/Scheduler';
-import {AsyncScheduler} from 'rxjs/scheduler/AsyncScheduler';
 import {async} from 'rxjs/scheduler/async';
 
 @Injectable()
@@ -22,11 +20,14 @@ export class DataService {
           .flatMap((error: any) => {
             if (error.status === 503) {
               console.log('error', error, 's');
-              return Observable.of(error.status).delay(this.delay, this.scheduler);
+              return Observable.of(error.status)/*.delay(this.delay, this.scheduler)*/;
             }
             return Observable.throw({error: 'No retry'});
           })
           .take(this.retries)
+          .do(val => {
+            console.log('val');
+          })
           .concat(Observable.throw({error: `Sorry, there was an error after ${this.retries} retries`}));
       });
   }
