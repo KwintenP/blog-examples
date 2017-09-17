@@ -25,9 +25,14 @@ export class DataService {
             return Observable.throw({error: 'No retry'});
           })
           .take(this.retries)
-          .do(val => {
-            console.log('val');
-          })
+          .do(
+            val => {
+              console.log('val');
+            },
+            console.log,
+            () => {
+              console.log('test');
+            })
           .concat(Observable.throw({error: `Sorry, there was an error after ${this.retries} retries`}));
       });
   }
