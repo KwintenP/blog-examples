@@ -63,10 +63,9 @@ describe('DataService', () => {
                                  '            ^---!        ',
                                  '                ^---!    ',
                                  '                    ^---!'];
-    const expected =             '--------------------#';
+    const expected =             '------------------------#';
     // @formatter:on
 
-    service.delay = 10;
     service.retries = 5;
 
     service.scheduler = m.scheduler;
