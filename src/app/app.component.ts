@@ -12,7 +12,6 @@ import 'rxjs/add/operator/audit';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/concat';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/shareReplay';
 
 import 'rxjs/add/observable/combineLatest';
@@ -22,8 +21,12 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/zip';
 import 'rxjs/add/observable/concat';
 import {StarWarsService} from './common-logic/services/star-wars.service';
+import {take, toArray} from "rxjs/operators";
+import {interval} from "rxjs/observable/interval";
+
 declare const fetch;
 declare const web3;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,6 +40,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    interval(1000).pipe(
+      take(3),
+      toArray()
+    )
+      .subscribe(x => console.log('testt', x));
+
     // const interval$ = Observable.interval(500)
     //   .debug('interval')
     //   .startWith(10)
@@ -89,9 +98,9 @@ export class AppComponent implements OnInit {
     //
     // setTimeout(() => interval$.subscribe(console.log), 600);
 
-    Observable.of(10)
-      .delay(1000)
-      .subscribe(console.log);
+    // Observable.of(10)
+    //   .delay(1000)
+    //   .subscribe(console.log);
 
     //
     // const getCharacter = () => {

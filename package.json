@@ -35,7 +35,7 @@
     "jquery": "^3.2.1",
     "rx-devtools": "0.0.1-alpha.52",
     "rxfiddle": "1.0.4",
-    "rxjs": "5.4.0",
+    "rxjs": "5.5.0-beta.3",
     "rxjs-consecutive-operator": "1.0.0",
     "rxjs-marbles": "2.0.0",
     "tether": "^1.4.0",
