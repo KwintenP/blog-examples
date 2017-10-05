@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     interval(1000).pipe(
+
       take(3),
       toArray()
     )
